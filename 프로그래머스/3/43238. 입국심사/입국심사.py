@@ -1,5 +1,5 @@
 def solution(n, times):
-    timeMin = 0 
+    timeMin = 1
     timeMax = max(times) * n
     
     while timeMin <= timeMax :
