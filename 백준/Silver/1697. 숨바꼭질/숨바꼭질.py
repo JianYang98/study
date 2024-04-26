@@ -14,7 +14,7 @@ def bfs(start) :
         if k == v : # 동생 V 랑 bfs랑 같으면 걍 멈춰
             return filedList[v]
         for next_v  in (v-1 , v+1 ,v*2 ) :
-            if 0<=next_v<=100000 and not filedList[next_v ] :
+            if 0<=next_v<=100000 and  filedList[next_v ] ==0 :
                 filedList[next_v ]= filedList[v] + 1
                 bqueue.append(next_v)
 
