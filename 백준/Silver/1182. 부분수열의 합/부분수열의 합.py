@@ -7,13 +7,13 @@ def dfs(num,sum):
 	global cnt
 	if num >= n:
 		return
-	sum += nlist[num]
-	if sum == s:
+
+	if sum + nlist[num] == s:
 		cnt += 1
 
 
+	dfs(num+1,sum+nlist[num])
 	dfs(num+1,sum)
-	dfs(num+1,sum-nlist[num])
 
 dfs(0,0)
 print(cnt)
