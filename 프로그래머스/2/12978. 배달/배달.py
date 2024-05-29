@@ -35,14 +35,9 @@ def solution(N, road, K):
     beforeC =int(1e9)
 
     for a,b,c in road :
-        if beforeA == a and beforeB == b and beforeC<c:
-            c = beforeC
-        
         graph[a].append((b,c))
         graph[b].append((a,c))
-        beforeA = a
-        beforeB = b
-        beforeC = c        
+       
         
     
     result =dijkstra(graph , distince)
