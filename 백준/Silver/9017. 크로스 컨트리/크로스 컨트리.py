@@ -1,22 +1,23 @@
 import sys
 from collections import Counter
-input = sys.stdin.readline
 
-T = int(input())
+T = int(sys.stdin.readline().rstrip())
 for _ in range(T):
-  N = int(input())
-  teams = list(map(int, input().split()))
-  counter = Counter(teams)
-  #print(counter)
-  scores = {}
+    n = int(sys.stdin.readline().rstrip())
+    team = list(map(int,sys.stdin.readline().split()))
+    counter = Counter(team)
+    score= {}
 
-  rank = 1
-  for i in range(N):
-    if counter[teams[i]] == 6:
-      if teams[i] in scores:
-        scores[teams[i]].append(rank)
-      else:
-        scores[teams[i]] = [rank]
-      rank += 1
-  #print(scores)
-  print(sorted(scores, key = lambda x:(sum(scores[x][0:4]), scores[x][4]))[0])
+    rank =1
+    for i in range(n):
+        if counter[team[i]] == 6 : # 명이고고
+            if  team[i] in score:
+                score[team[i]].append(rank) 
+            else : 
+                score[team[i]] = [rank]
+            rank +=1
+    #print(score)
+    print(sorted(score, key = lambda x:(sum(score[x][0:4]), score[x][4]))[0])
+
+
+
