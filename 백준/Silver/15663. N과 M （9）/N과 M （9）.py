@@ -1,27 +1,30 @@
 import sys
 
-n , m = map(int,sys.stdin.readline().split())
-nList = list(map(int,sys.stdin.readline().split()))
-nList.sort()
+n , m = map(int, sys.stdin.readline().split())
+tList = list(map(int, sys.stdin.readline().split()))
 
-result = []
-res = [False]*n
+# 정렬
+tList.sort()
+visitMoment = []
+visit = [False] * n
 
-def DFS():
-    check = 0
-    if len(result) == m :
-        print(*result)
-        return 
+def DFS (k) :
+    # visitMoment에 전칸과 내가 같아? 그럼 ㄴ
+    #print(k)
+    check = 0 
+
+    if len(visitMoment) == m :
+        print(*visitMoment)
     else :
-        for x in range(n) :
-            if res[x] == False and check != nList[x] :
-                result.append(nList[x])
-                check = nList[x]
-                res[x] = True
-                DFS()
-                result.pop()
-                res[x] = False
+        for i in range(n) :
+            if visit[i] == False and check != tList[i] :
 
-DFS()
+                visit[i] = True
+                visitMoment.append(tList[i])
+   
+                DFS(k+1)
+                check = visitMoment.pop()
+                visit[i] = False
 
 
+DFS(0)
