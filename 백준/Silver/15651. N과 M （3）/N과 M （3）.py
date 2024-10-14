@@ -1,19 +1,30 @@
+#8:31
 import sys
 
-n , m = map(int,sys.stdin.readline().split())
+n , m = map(int, sys.stdin.readline().split())
+tList = list(map(int, sys.stdin.readline().split()))
 
-result = []
+# 정렬
+tList.sort()
+visitMoment = []
+visit = [False] * n
 
-def DFS():
-    if len(result) == m :
-        print(*result)
-        return 
+def DFS (k) :
+
+    if len(visitMoment) == m :
+        print( *visitMoment)
     else :
-        for x in range(1,n+1) :
-                result.append(x)
-                DFS()
-                result.pop()
+        for i in range(1,n+1) :
 
-DFS()
+            visitMoment.append(i)
+   
+            DFS(k+1)
+            visitMoment.pop()
+
+       
+        
+    
 
 
+
+DFS(0)
